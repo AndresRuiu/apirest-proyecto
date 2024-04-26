@@ -95,7 +95,6 @@ router.delete('/reservations/:reservationId', async(req, res) => {
                 room.reservada = false;
                 await room.save();
             }
-            
             const user = await userSchema.findOne({ userId: reservation.user });
             if (user) {
                 const index = user.reservations.indexOf(reservationId);
@@ -113,8 +112,6 @@ router.delete('/reservations/:reservationId', async(req, res) => {
         res.status(500).json({ mensaje: 'Error al eliminar la reservacion', error: error.toString() });
     }
 });
-
-
 
 
 
