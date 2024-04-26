@@ -1,28 +1,86 @@
-###
+//peticiones usuarios
+### Crear un nuevo usuario
 POST http://localhost:3000/api/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombre": "Andres Ruiu",
-    "edad": 24,
+    "userName": "andresruiu",
+    "password": "basado222",
     "email": "andresruiu@gmail.com"
 }
 
-###
+### Mostrar todos los usuarios
 GET http://localhost:3000/api/users HTTP/1.1
 
-###
-GET http://localhost:3000/api/users/6629a2b37ace8115270bdcb4 HTTP/1.1
+### Mostrar un solo usuario
+GET http://localhost:3000/api/users/11743e2f-9787-4db7-b5c6-21358dd03def HTTP/1.1
 
-###
-PUT http://localhost:3000/api/users/6629a2b37ace8115270bdcb4 HTTP/1.1
+### Actualizar un usuario
+PUT http://localhost:3000/api/users/752f9cce-69c4-4d6d-bd9d-e1f4c5bec571 HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombre": "Fernando Quinteros Icon",
-    "edad": 24,
+    "userName": "fernandoquinteros",
+    "password": 24,
     "email": "fernandoquinteros@gmail.com"
 }
 
-###
-DELETE http://localhost:3000/api/users/6629a2b37ace8115270bdcb4 HTTP/1.1
+### Eliminar un usuario
+DELETE http://localhost:3000/api/users/752f9cce-69c4-4d6d-bd9d-e1f4c5bec571 HTTP/1.1
+
+//peticiones habitaciones
+### Crear una habitacion
+POST http://localhost:3000/api/rooms HTTP/1.1
+Content-Type: application/json
+
+{
+    "tipoHabitacion": "Duplex",
+    "precio": 4000
+}
+
+### Mostrar todas las habitaciones
+GET http://localhost:3000/api/rooms HTTP/1.1
+
+### Mostrar una habitacion
+GET http://localhost:3000/api/rooms/1 HTTP/1.1
+
+### Actualizar el precio de una habitación
+PATCH http://localhost:3000/api/rooms/1
+Content-Type: application/json
+
+{
+    "precio": 3000
+}
+
+//Peticiones de las reservacion
+###Crear una reservacion
+POST http://localhost:3000/api/reservations HTTP/1.1
+Content-Type: application/json
+
+{
+    "user": "31b9d6f2-65d6-44b2-ad8f-721d340d289f",
+    "room": 2,
+    "startDate": "2024-05-01",
+    "endDate": "2024-05-10"
+}
+
+### Mostrar todas las reservaciones
+GET http://localhost:3000/api/reservations HTTP/1.1
+
+### Mostrar una reservacion
+GET http://localhost:3000/api/reservations/3f021607-9135-406e-a776-bea11c5b0ceb HTTP/1.1
+
+###Mostrar las reservaciones de un usuario
+GET http://localhost:3000/api/users/731df729-4cb6-4857-9a58-ddcc6855ef97/reservations HTTP/1.1
+
+### Actualizar una reservacion
+PUT http://localhost:3000/api/reservations/3f021607-9135-406e-a776-bea11c5b0ceb HTTP/1.1
+Content-Type: application/json
+
+{
+    "startDate": "2024-05-02",
+    "endDate": "2024-05-10"
+}
+
+### Borrar una reservacion
+DELETE http://localhost:3000/api/reservations/311070ca-f6a5-4a6e-b173-2831c5c015bf HTTP/1.1

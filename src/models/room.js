@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const roomSchema = mongoose.Schema({
     numeroHabitacion: {
@@ -10,7 +10,7 @@ const roomSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    precio: {
+    precio:{
         type: Number,
         required: true
     },

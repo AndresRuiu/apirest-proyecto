@@ -6,18 +6,23 @@ const userSchema = mongoose.Schema({
         required: true,
         unique: true
     },
-    nombre:{
+    userName:{
         type: String,
-        required:true
+        required: true,
+        unique: true
     },
-    edad:{
-        type: Number,
-        required: true
+    password:{
+        type: String,
+        required: true,
     },
     email:{
         type: String,
         required: true
-    }
+    },
+    reservations: [{
+        type: String,
+        ref: 'Reservation'
+    }]
 });
 
 module.exports = mongoose.model('User', userSchema);
