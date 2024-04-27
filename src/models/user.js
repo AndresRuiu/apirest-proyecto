@@ -20,9 +20,12 @@ const userSchema = mongoose.Schema({
         required: true
     },
     reservations: [{
-        type: String,
-        ref: 'Reservation'
+        reservationNumber: Number,
+        room: String,
+        startDate: Date,
+        endDate: Date
     }]
 });
+
 
 module.exports = mongoose.model('User', userSchema);

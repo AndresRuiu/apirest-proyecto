@@ -24,7 +24,13 @@ router.post('/reservations', async (req, res) => {
             }
             const user = await userSchema.findOne({ userId: req.body.user });
             if (user) {
-                user.reservations.push(savedReservation.reservationId);
+                const reservationNumber = user.reservations.length + 1;
+                user.reservations.push({
+                    reservationNumber: reservationNumber,
+                    room: req.body.room,
+                    startDate: req.body.startDate,
+                    endDate: req.body.endDate
+                });
                 await user.save();
             }
             res.json(`Se a registrado en la habitacion ${room.numeroHabitacion}`);
@@ -33,7 +39,6 @@ router.post('/reservations', async (req, res) => {
         res.status(500).json({ mensaje: 'Error al crear la reservación', error: error.toString() });
     }
 });
-
 
 
 // Mostrar todas las reservaciones

@@ -4,16 +4,16 @@ POST http://localhost:3000/api/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "userName": "andresruiu",
-    "password": "basado222",
-    "email": "andresruiu@gmail.com"
+    "userName": "tinitini",
+    "password": "mamila",
+    "email": "tinitini@gmail.com"
 }
 
 ### Mostrar todos los usuarios
 GET http://localhost:3000/api/users HTTP/1.1
 
 ### Mostrar un solo usuario
-GET http://localhost:3000/api/users/a564e4c3-cf68-4016-9d5e-c85977f746ce HTTP/1.1
+GET http://localhost:3000/api/users/8bb84e60-5369-416d-bc58-05ff7cc771af HTTP/1.1
 
 ### Actualizar un usuario
 PUT http://localhost:3000/api/users/a564e4c3-cf68-4016-9d5e-c85977f746ce HTTP/1.1
@@ -58,10 +58,10 @@ POST http://localhost:3000/api/reservations HTTP/1.1
 Content-Type: application/json
 
 {
-    "user": "a564e4c3-cf68-4016-9d5e-c85977f746ce",
-    "room": 2,
-    "startDate": "2024-05-01",
-    "endDate": "2024-05-10"
+    "user": "8bb84e60-5369-416d-bc58-05ff7cc771af",
+    "room": 1,
+    "startDate": "2024-06-01",
+    "endDate": "2024-08-10"
 }
 
 ### Mostrar todas las reservaciones

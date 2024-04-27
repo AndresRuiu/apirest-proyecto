@@ -29,11 +29,6 @@ router.post('/users', async (req, res) => {
 router.get('/users', async (req, res) => {
     try {
         const users = await userSchema.find().populate('reservations');
-        users.forEach(user => {
-            if (!user.reservations.length) {
-                user.reservations = 'El usuario no tiene reservas';
-            }
-        });
         res.json(users);
     } catch (error) {
         console.error(error);
@@ -49,9 +44,6 @@ router.get('/users/:userId', async (req, res) => {
         if (!user) {
             res.status(404).json({ mensaje: 'Usuario no encontrado' });
         } else {
-            if (!user.reservations.length) {
-                user.reservations = 'El usuario no tiene reservas';
-            }
             res.json(user);
         }
     } catch (error) {
@@ -59,6 +51,7 @@ router.get('/users/:userId', async (req, res) => {
         res.status(500).json({ mensaje: 'Error al obtener el usuario', error: error });
     }
 });
+
 
 //actualizar un usuario
 //proximamente usar patch para solo actualizar el usuario o la contraseña
