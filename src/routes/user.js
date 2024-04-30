@@ -18,9 +18,9 @@ router.post('/users', async (req, res) => {
         });
         const savedUser = await user.save();
         res.json(savedUser);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ mensaje: 'Error al encriptar la contraseña', error: err.toString()});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ mensaje: 'Error al encriptar la contraseña', error: error.toString()});
     }
 });
 
@@ -54,13 +54,12 @@ router.get('/users/:userId', async (req, res) => {
 
 
 //actualizar un usuario
-//proximamente usar patch para solo actualizar el usuario o la contraseña
 router.put('/users/:userId', async (req,res) =>{
     const {userId} = req.params;
     const {userName,password, email} = req.body;
     try {
-        const data = await userSchema.updateOne({userId: userId}, {$set: {userName,password, email}});
-        res.json(data);
+        const user = await userSchema.updateOne({userId: userId}, {$set: {userName,password, email}});
+        res.json(user);
     } catch (error) {
         res.json({mensaje: 'Error al actualizar el usuario', error: error});
     }
@@ -70,10 +69,10 @@ router.put('/users/:userId', async (req,res) =>{
 router.delete('/users/:userId', async (req,res) =>{
     const {userId} = req.params;
     try {
-        const data = await userSchema.deleteOne({userId: userId});
-        res.json(data);
+        const user = await userSchema.deleteOne({userId: userId});
+        res.json(user);
     } catch (error) {
-        res.json({mensaje: error});
+        res.json({mensaje: 'Error al eliminar el usuario', error: error});
     }
 })
 

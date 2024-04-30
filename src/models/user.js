@@ -20,6 +20,7 @@ const userSchema = mongoose.Schema({
         required: true
     },
     reservations: [{
+        reservationId: String,
         reservationNumber: Number,
         room: String,
         startDate: Date,
